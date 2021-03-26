@@ -24,11 +24,16 @@ The game will end when one player reaches 0 health points or is unable to draw m
 *Product does not include:
 -User decides to play single player mode against an AI bot on easy, medium, or hard difficulty (too complex/not much time to implement)
 -No libraries of card lists based on other online card games will be used in our implementation of the card game; we will design our own images and each functionality through Unity 2D.
--
+-In game purchases or application created for monetization purposes 
 
 1.3 Acronyms, Abbreviations, Definitions
 -gamble : use dice rolls or coin flips to randomize card interactions with players or other creatures
 -guard : while this card is in play, its owner cannot be attacked directly by creatures
+-PvP implementation : two or more players face off in the arena under an online lobby server
+-mana: currency that is used in the game to utilize powerful spells that could grant you more damage to attack a player
+-leaderboard : tally of wins/losses during a single round
+-arena: UI area where each player has their own respective zones to strategize and battle the other player in a game of wits
+-main menu: starting screen that will let the user manually start the game or will automatically take the player to this screen if they quit in the middle of a game session
 
 1.4 References
 URL link for project specifications : https://shanhead.github.io/CelestialOctopi/
@@ -58,7 +63,15 @@ name
 
 
 2.3 Product Functions (general)
-
+Casting cards will require mana, which will be automatically provided at the beginning of a player’s turn and increase every turn until they reach 8
+Different card types:
+Creatures, which have a mana cost, attack and health values used in combat (you’ll see these written as “x mana y/z”, where x is mana cost, y is attack value, z is the creature’s health)
+Spells, which will have a mana cost and affect various aspects of the game.
+Players begin the game with 20 health
+Players start with 25-card decks and draw hands of 5 cards
+Both players will be unable to hold more than 7 cards; if a card was to be drawn while a player already has 7 cards, the card will be discarded
+A player will lose when their life total reaches 0 (or fewer) points, runs out of cards, or leaves the game prematurely
+Combat between creatures: when a creature attacks another, both creatures inflict their attack value onto the other creature simultaneously. If one or both creatures would survive this damage, it will return to full health at the beginning of the next turn.
 
 2.4 User Characteristics and Expectations
 *New users should be able to start the game and understand the rules and mechanics of the game with ease, without needing to ask for clarification from the development team.
@@ -93,7 +106,16 @@ Userstories page link for CelestialOctopi Project Page : https://shanhead.github
 
 4. System and Non-functional Requirements
 4.1 External Interface Requirements (User,Hardware,Software,Communications)
-Describe what kinds of interfaces your product has, and what they do. Then list specific requirements using item numbers as NF.4.1.X.
+Our project implements a Unity UI interface, which is a UI toolkit for developing user interfaces for games and applications. 
+It is a GameObject-based UI system that uses Components and the Game View to arrange, position, and style user interfaces.
+Developers cannot use Unity UI to create or change user interfaces in the Unity Editor. 
+Our programming IDE involves Visual Studio and creating C# scripts to perform certain in-game functionalities. In-game functionalities for the project include, but are not limmited to:
+-Casting spells
+-Drag and drop functionality
+-Roll dice/flip coin to decide a random player that goes first in the game
+
+4.1 Requirements using item numbers:
+NF.4.1.X. 
 
 4.2 Performance Requirements
 Describe your product's performance needs. Then list specific requirements using item numbers as NF.4.2.X.
@@ -120,3 +142,7 @@ Describe external requirements that will constrain your design choices. Then lis
 
 5. Appendices
 Include external documents that describe domain or constraints or any necessary information. Use URL links if possible.
+
+-Architecture of card game project : https://shanhead.github.io/CelestialOctopi/architecture (page will be updated as part of project requirements)
+-Design document URL link : https://shanhead.github.io/CelestialOctopi/design (page will be updated as part of project requirements)
+-
